@@ -2,929 +2,529 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Pakistan Legal AI — Case Law Research</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0e1a;
-    --bg2: #0f1525;
-    --bg3: #151d33;
-    --surface: #1a2340;
-    --surface2: #1f2a4a;
-    --border: rgba(100,140,220,0.15);
-    --border2: rgba(100,140,220,0.25);
-    --accent: #4a7cf8;
-    --accent2: #6b9bff;
-    --gold: #d4a942;
-    --gold2: #e8c06a;
-    --green: #2dd4a0;
-    --red: #f05f5f;
-    --text: #e8eaf0;
-    --text2: #9ba8c4;
-    --text3: #6b7a9a;
-    --shc: #4a7cf8;
-    --lhc: #d4a942;
-    --ihc: #2dd4a0;
-    --radius: 10px;
-    --radius-lg: 16px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'IBM Plex Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    line-height: 1.6;
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d1117;--ink2:#1c2333;--ink3:#243048;
+  --glass:rgba(255,255,255,0.04);--glass2:rgba(255,255,255,0.07);
+  --rim:rgba(255,255,255,0.08);--rim2:rgba(255,255,255,0.14);
+  --blue:#3b74f5;--blue2:#6496ff;
+  --gold:#c9973a;--gold2:#e2b85a;
+  --jade:#25c898;--red:#e05050;
+  --snow:#eef0f6;--mist:#8d9ab8;--fog:#5a6888;
+  --shc:#3b74f5;--lhc:#c9973a;--ihc:#25c898;
+  --r:12px;--r-lg:18px;--r-xl:24px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--snow);min-height:100vh;line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 15% 10%,rgba(59,116,245,0.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 85% 85%,rgba(201,151,58,0.06) 0%,transparent 50%);pointer-events:none;z-index:0}
 
-  /* ── Header ────────────────────────────────────────── */
-  header {
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .logo-icon {
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, var(--accent), var(--gold));
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-  }
-  .logo-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.3px;
-  }
-  .logo-sub {
-    font-size: 11px;
-    color: var(--text3);
-    font-weight: 400;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-top: 1px;
-  }
-  .header-stats {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  .stat-badge {
-    font-size: 12px;
-    color: var(--text3);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .stat-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--green);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+/* HEADER */
+header{position:sticky;top:0;z-index:200;background:rgba(13,17,23,0.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--rim);padding:0 1.25rem;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-emblem{width:34px;height:34px;background:linear-gradient(135deg,var(--blue),var(--gold));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--snow);line-height:1.1}
+.logo-tag{font-size:9px;color:var(--fog);letter-spacing:1.4px;text-transform:uppercase}
+.hdr-right{display:flex;align-items:center;gap:10px}
+.live{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--mist);white-space:nowrap}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--jade);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.burger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:6px;border-radius:8px}
+.burger span{display:block;width:20px;height:2px;background:var(--mist);border-radius:2px;transition:all .25s}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
-  /* ── Layout ────────────────────────────────────────── */
-  .layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    min-height: calc(100vh - 64px);
-  }
+/* SHELL */
+.shell{position:relative;z-index:1;display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 60px)}
 
-  /* ── Sidebar ───────────────────────────────────────── */
-  .sidebar {
-    background: var(--bg2);
-    border-right: 1px solid var(--border);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .sidebar-section h3 {
-    font-size: 11px;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: var(--text3);
-    margin-bottom: 10px;
-    font-weight: 500;
-  }
+/* SIDEBAR */
+.sidebar{background:var(--ink2);border-right:1px solid var(--rim);padding:1.25rem;display:flex;flex-direction:column;gap:1.5rem;position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--rim2) transparent}
+.s-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--fog);margin-bottom:6px}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--glass);border:1px solid var(--rim);border-radius:var(--r);padding:4px}
+.mpill{padding:7px 4px;border:none;border-radius:8px;background:transparent;color:var(--fog);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;text-align:center;width:100%}
+.mpill.on{background:var(--blue);color:#fff;box-shadow:0 2px 8px rgba(59,116,245,.4)}
+.clist{display:flex;flex-direction:column;gap:4px}
+.citem{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid transparent;border-radius:var(--r);background:transparent;cursor:pointer;transition:all .15s;color:var(--mist);font-family:'DM Sans',sans-serif;font-size:13px;text-align:left;width:100%}
+.citem:hover{background:var(--glass2);color:var(--snow)}
+.citem.on{background:var(--glass2);border-color:var(--rim2);color:var(--snow)}
+.cpip{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.cnum{margin-left:auto;font-size:10px;background:var(--glass2);border-radius:4px;padding:1px 6px;color:var(--fog);font-family:'DM Mono',monospace}
+.sform{display:flex;flex-direction:column;gap:6px}
+.field{width:100%;padding:8px 11px;background:var(--glass);border:1px solid var(--rim);border-radius:var(--r);color:var(--snow);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:border-color .15s}
+.field:focus{border-color:var(--blue)}
+.field::placeholder{color:var(--fog)}
+select.field option{background:var(--ink2)}
+.btn-s{padding:9px;background:var(--glass2);border:1px solid var(--rim2);border-radius:var(--r);color:var(--mist);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px;width:100%}
+.btn-s:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-s:disabled{opacity:.4;cursor:not-allowed}
+.dbp{background:var(--glass);border:1px solid var(--rim);border-radius:var(--r);padding:10px 12px;display:flex;flex-direction:column;gap:5px;margin-top:auto}
+.dbr{display:flex;justify-content:space-between;font-size:11px}
+.dbr span:first-child{color:var(--fog)}
+.dbr span:last-child{color:var(--mist);font-family:'DM Mono',monospace;font-size:10px}
 
-  /* Court filters */
-  .court-filters {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .court-btn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 9px 12px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: transparent;
-    cursor: pointer;
-    color: var(--text2);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 13px;
-    transition: all 0.15s;
-    text-align: left;
-    width: 100%;
-  }
-  .court-btn:hover { background: var(--surface); color: var(--text); }
-  .court-btn.active { background: var(--surface2); border-color: var(--border2); color: var(--text); }
-  .court-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .court-count {
-    margin-left: auto;
-    font-size: 11px;
-    background: var(--surface);
-    border-radius: 4px;
-    padding: 1px 6px;
-    color: var(--text3);
-  }
+/* MAIN */
+.main{display:flex;flex-direction:column;gap:1.25rem;padding:1.5rem;max-width:860px;width:100%}
 
-  /* Mode toggle */
-  .mode-toggle {
-    display: flex;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-  .mode-btn {
-    flex: 1;
-    padding: 8px;
-    border: none;
-    background: transparent;
-    color: var(--text3);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-weight: 500;
-  }
-  .mode-btn.active { background: var(--accent); color: #fff; }
+/* SEARCH CARD */
+.scard{background:var(--glass);border:1px solid var(--rim);border-radius:var(--r-xl);padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:12px}
+.s-heading{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--snow);line-height:1.2}
+.srow{display:flex;gap:8px}
+.sinput{flex:1;min-width:0;padding:12px 16px;background:var(--ink2);border:1px solid var(--rim2);border-radius:var(--r);color:var(--snow);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s}
+.sinput:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(59,116,245,.15)}
+.sinput::placeholder{color:var(--fog)}
+.btn-go{padding:12px 20px;background:var(--blue);border:none;border-radius:var(--r);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .15s;box-shadow:0 2px 12px rgba(59,116,245,.35);flex-shrink:0}
+.btn-go:hover{background:var(--blue2);transform:translateY(-1px)}
+.btn-go:active{transform:none}
+.btn-go:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip-lbl{font-size:11px;color:var(--fog)}
+.chip{padding:4px 10px;background:var(--glass);border:1px solid var(--rim);border-radius:20px;font-size:11px;color:var(--mist);cursor:pointer;transition:all .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.chip:hover,.chip:active{border-color:var(--blue);color:var(--blue2);background:rgba(59,116,245,.08)}
 
-  /* Scrape section */
-  .scrape-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  input[type="text"], select {
-    width: 100%;
-    padding: 8px 12px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 13px;
-    outline: none;
-  }
-  input[type="text"]:focus, select:focus { border-color: var(--accent); }
-  select option { background: var(--bg2); }
+/* TOAST */
+.toast{padding:11px 15px;border-radius:var(--r);font-size:13px;display:none;line-height:1.5}
+.toast.show{display:block}
+.toast.err{background:rgba(224,80,80,.1);border:1px solid rgba(224,80,80,.25);color:#ff8080}
+.toast.ok{background:rgba(37,200,152,.1);border:1px solid rgba(37,200,152,.25);color:var(--jade)}
+.toast.info{background:rgba(59,116,245,.1);border:1px solid rgba(59,116,245,.25);color:var(--blue2)}
 
-  .btn {
-    padding: 9px 16px;
-    border-radius: var(--radius);
-    border: none;
-    cursor: pointer;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    transition: all 0.15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    width: 100%;
-  }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent2); }
-  .btn-secondary { background: var(--surface); color: var(--text2); border: 1px solid var(--border); }
-  .btn-secondary:hover { background: var(--surface2); color: var(--text); }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+/* LOADER */
+.loader{display:none;flex-direction:column;align-items:center;gap:14px;padding:3rem 2rem;color:var(--fog);font-size:13px}
+.loader.show{display:flex}
+.spin{width:36px;height:36px;border:2px solid var(--rim2);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-  .db-info {
-    background: var(--surface);
-    border-radius: var(--radius);
-    padding: 12px;
-    font-size: 12px;
-  }
-  .db-info-row {
-    display: flex;
-    justify-content: space-between;
-    color: var(--text3);
-    padding: 3px 0;
-  }
-  .db-info-row span:last-child { color: var(--text2); font-weight: 500; }
+/* ANALYSIS */
+.acard{background:var(--glass);border:1px solid var(--rim);border-radius:var(--r-xl);overflow:hidden;display:none}
+.acard.show{display:block}
+.ahead{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--glass2);border-bottom:1px solid var(--rim);gap:8px;flex-wrap:wrap}
+.atitle{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
+.ai-pill{font-size:9px;font-weight:600;letter-spacing:.8px;padding:2px 7px;background:rgba(59,116,245,.2);color:var(--blue2);border-radius:4px;text-transform:uppercase}
+.ameta{font-size:11px;color:var(--fog)}
+.abody{padding:16px;font-size:13px;line-height:1.85;color:var(--mist);white-space:pre-wrap;overflow-x:auto}
+.abody strong{color:var(--snow);font-weight:600}
+.cstrip{padding:12px 16px;border-top:1px solid var(--rim);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ctag{font-size:10px;font-weight:600;letter-spacing:1px;color:var(--fog);text-transform:uppercase;margin-right:2px}
+.cpill-c{padding:3px 8px;background:rgba(201,151,58,.1);border:1px solid rgba(201,151,58,.3);border-radius:5px;font-size:11px;color:var(--gold2);font-family:'DM Mono',monospace}
 
-  /* ── Main Content ──────────────────────────────────── */
-  .main {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    gap: 1.5rem;
-    max-width: 900px;
-  }
+/* RESULTS */
+.rbar{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--fog)}
+.rn{color:var(--mist);font-weight:500}
+.rgrid{display:flex;flex-direction:column;gap:8px}
+.cc{background:var(--glass);border:1px solid var(--rim);border-radius:var(--r-lg);padding:14px 16px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:border-color .15s,background .15s;-webkit-tap-highlight-color:transparent}
+.cc:hover{border-color:var(--rim2);background:var(--glass2)}
+.crow1{display:flex;align-items:center;gap:8px;justify-content:space-between}
+.cbadge{font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:5px;flex-shrink:0}
+.cbadge.SHC{background:rgba(59,116,245,.15);color:var(--shc)}
+.cbadge.LHC{background:rgba(201,151,58,.15);color:var(--lhc)}
+.cbadge.IHC{background:rgba(37,200,152,.15);color:var(--ihc)}
+.cbadge.PKT,.cbadge.SC{background:rgba(141,154,184,.15);color:var(--mist)}
+.simw{display:flex;align-items:center;gap:6px}
+.simb{width:50px;height:3px;background:var(--rim);border-radius:2px;overflow:hidden}
+.simf{height:100%;background:var(--blue);border-radius:2px}
+.simp{font-size:10px;color:var(--fog);font-family:'DM Mono',monospace;min-width:28px;text-align:right}
+.ctitle{font-size:14px;font-weight:500;color:var(--snow);line-height:1.4}
+.cmeta{display:flex;gap:12px;flex-wrap:wrap}
+.cmc{font-size:11px;color:var(--fog);display:flex;align-items:center;gap:4px}
+.cmc .v{color:var(--mist);font-family:'DM Mono',monospace;font-size:10px}
+.csnip{font-size:12px;color:var(--fog);line-height:1.65;border-left:2px solid var(--rim2);padding-left:10px;display:none}
+.cc.open .csnip{display:block}
+.clink{font-size:11px;color:var(--blue2);text-decoration:none;display:none;align-items:center;gap:3px}
+.cc.open .clink{display:inline-flex}
+.clink:hover{text-decoration:underline}
 
-  /* Search bar */
-  .search-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 16px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .search-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--text);
-  }
-  .search-input-row {
-    display: flex;
-    gap: 10px;
-  }
-  .search-input {
-    flex: 1;
-    padding: 12px 16px;
-    background: var(--bg2);
-    border: 1px solid var(--border2);
-    border-radius: var(--radius);
-    color: var(--text);
-    font-size: 15px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    outline: none;
-  }
-  .search-input:focus { border-color: var(--accent); }
-  .search-input::placeholder { color: var(--text3); }
-  .search-go {
-    padding: 12px 24px;
-    background: var(--accent);
-    border: none;
-    border-radius: var(--radius);
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
-    font-weight: 600;
-    font-family: 'IBM Plex Sans', sans-serif;
-    transition: all 0.15s;
-    white-space: nowrap;
-  }
-  .search-go:hover { background: var(--accent2); }
-  .search-go:disabled { opacity: 0.5; cursor: not-allowed; }
+/* EMPTY */
+.empty{text-align:center;padding:4rem 1.5rem;color:var(--fog)}
+.ei{font-size:44px;margin-bottom:14px;opacity:.4}
+.eh{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--mist);margin-bottom:6px}
+.ep{font-size:13px;line-height:1.6}
 
-  /* Example queries */
-  .examples {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .example-chip {
-    padding: 4px 10px;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    font-size: 12px;
-    color: var(--text3);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .example-chip:hover { border-color: var(--accent); color: var(--accent2); }
+/* BOTTOM NAV — mobile only */
+.bnav{display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(13,17,23,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--rim);padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:300;justify-content:space-around}
+.bnb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px;background:none;border:none;color:var(--fog);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;cursor:pointer;transition:color .15s;-webkit-tap-highlight-color:transparent}
+.bnb.on{color:var(--blue2)}
+.bnico{font-size:20px;line-height:1}
 
-  /* AI Analysis Panel */
-  .analysis-panel {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    display: none;
-  }
-  .analysis-panel.show { display: block; }
-  .panel-header {
-    padding: 14px 20px;
-    background: var(--bg3);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .panel-title {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .ai-badge {
-    font-size: 10px;
-    padding: 2px 7px;
-    background: rgba(74,124,248,0.2);
-    color: var(--accent2);
-    border-radius: 4px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-  }
-  .analysis-body {
-    padding: 20px;
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--text2);
-    white-space: pre-wrap;
-  }
-  .analysis-body strong { color: var(--text); font-weight: 600; }
+/* DRAWER */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;backdrop-filter:blur(4px)}
+.overlay.open{display:block}
+.drawer{position:fixed;bottom:0;left:0;right:0;background:var(--ink2);border-top:1px solid var(--rim2);border-radius:20px 20px 0 0;padding:1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));z-index:500;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,.72,0,1);max-height:80vh;overflow-y:auto}
+.drawer.open{transform:translateY(0)}
+.dhandle{width:36px;height:4px;background:var(--rim2);border-radius:2px;margin:0 auto 1.25rem}
+.dcontent{display:flex;flex-direction:column;gap:1.25rem}
 
-  /* Citations row */
-  .citations-row {
-    padding: 14px 20px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    align-items: center;
-  }
-  .cite-label { font-size: 11px; color: var(--text3); font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; }
-  .cite-chip {
-    padding: 3px 9px;
-    background: rgba(212,169,66,0.1);
-    border: 1px solid rgba(212,169,66,0.3);
-    border-radius: 4px;
-    font-size: 12px;
-    color: var(--gold2);
-    font-family: 'IBM Plex Mono', monospace;
-  }
-
-  /* Results grid */
-  .results-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 13px;
-    color: var(--text3);
-  }
-  .results-count { font-weight: 500; color: var(--text2); }
-
-  .case-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 18px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: border-color 0.15s;
-    cursor: pointer;
-  }
-  .case-card:hover { border-color: var(--border2); }
-
-  .card-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .court-tag {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    padding: 3px 8px;
-    border-radius: 4px;
-    flex-shrink: 0;
-  }
-  .court-tag.SHC { background: rgba(74,124,248,0.15); color: var(--shc); }
-  .court-tag.LHC { background: rgba(212,169,66,0.15); color: var(--lhc); }
-  .court-tag.IHC { background: rgba(45,212,160,0.15); color: var(--ihc); }
-
-  .sim-bar {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-  }
-  .sim-track {
-    width: 60px;
-    height: 4px;
-    background: var(--bg3);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .sim-fill {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 2px;
-  }
-  .sim-pct {
-    font-size: 11px;
-    color: var(--text3);
-    font-family: 'IBM Plex Mono', monospace;
-    min-width: 30px;
-    text-align: right;
-  }
-
-  .card-title {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.4;
-    flex: 1;
-  }
-
-  .card-meta {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .meta-item {
-    font-size: 12px;
-    color: var(--text3);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .meta-item .val {
-    color: var(--text2);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-  }
-
-  .card-snippet {
-    font-size: 13px;
-    color: var(--text3);
-    line-height: 1.6;
-    border-left: 2px solid var(--border2);
-    padding-left: 12px;
-    display: none;
-  }
-  .case-card.expanded .card-snippet { display: block; }
-
-  .card-link {
-    font-size: 12px;
-    color: var(--accent2);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    width: fit-content;
-    display: none;
-  }
-  .case-card.expanded .card-link { display: inline-flex; }
-  .card-link:hover { text-decoration: underline; }
-
-  /* Loading state */
-  .loading {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 3rem;
-    color: var(--text3);
-    font-size: 14px;
-  }
-  .loading.show { display: flex; }
-  .spinner {
-    width: 32px; height: 32px;
-    border: 2px solid var(--border2);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* Status message */
-  .status-msg {
-    padding: 12px 16px;
-    border-radius: var(--radius);
-    font-size: 13px;
-    display: none;
-  }
-  .status-msg.show { display: block; }
-  .status-msg.info { background: rgba(74,124,248,0.1); border: 1px solid rgba(74,124,248,0.2); color: var(--accent2); }
-  .status-msg.success { background: rgba(45,212,160,0.1); border: 1px solid rgba(45,212,160,0.2); color: var(--green); }
-  .status-msg.error { background: rgba(240,95,95,0.1); border: 1px solid rgba(240,95,95,0.2); color: var(--red); }
-
-  /* Empty state */
-  .empty-state {
-    text-align: center;
-    padding: 4rem 2rem;
-    color: var(--text3);
-  }
-  .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.5; }
-  .empty-title { font-size: 18px; font-family: 'Playfair Display', serif; color: var(--text2); margin-bottom: 8px; }
-  .empty-sub { font-size: 14px; }
+/* RESPONSIVE */
+@media(max-width:768px){
+  .shell{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .burger{display:flex}
+  .bnav{display:flex}
+  .main{padding:1rem;padding-bottom:88px}
+  .s-heading{font-size:20px}
+  .btn-go{padding:12px 14px;font-size:13px}
+  .logo-tag{display:none}
+  .live span:not(.live-dot){display:none}
+}
+@media(max-width:420px){
+  header{padding:0 1rem;height:56px}
+  .main{padding:.75rem;padding-bottom:88px}
+  .scard{padding:1rem}
+  .s-heading{font-size:18px}
+  .sinput{font-size:14px}
+  .chip{font-size:10px;padding:3px 8px}
+}
+@media(min-width:1200px){
+  .shell{grid-template-columns:280px 1fr}
+  .main{padding:2rem;max-width:920px}
+}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">
-    <div class="logo-icon">⚖️</div>
+    <div class="logo-emblem">⚖️</div>
     <div>
-      <div class="logo-text">Pakistan Legal AI</div>
-      <div class="logo-sub">SHC · LHC · IHC Case Research</div>
+      <div class="logo-name">Pakistan Legal AI</div>
+      <div class="logo-tag">SHC · LHC · IHC</div>
     </div>
   </div>
-  <div class="header-stats">
-    <div class="stat-badge">
-      <div class="stat-dot"></div>
-      <span id="hdr-count">Loading...</span>
-    </div>
-    <div class="stat-badge" style="color: var(--text3);">Open-Source AI · Free Courts Data</div>
+  <div class="hdr-right">
+    <div class="live"><div class="live-dot"></div><span id="hdr-count">Connecting...</span></div>
+    <button class="burger" id="burger" onclick="toggleDrawer('menu')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<div class="layout">
+<div class="shell">
 
-  <!-- ── Sidebar ───────────────────────────────── -->
+  <!-- SIDEBAR -->
   <aside class="sidebar">
-
-    <div class="sidebar-section">
-      <h3>Search Mode</h3>
-      <div class="mode-toggle">
-        <button class="mode-btn active" onclick="setMode('search')" id="mode-search">🔍 Search</button>
-        <button class="mode-btn" onclick="setMode('analyze')" id="mode-analyze">🤖 AI Analyze</button>
+    <div>
+      <div class="s-label">Mode</div>
+      <div class="mode-grid">
+        <button class="mpill on" id="p-search" onclick="setMode('search')">🔍 Search</button>
+        <button class="mpill" id="p-analyze" onclick="setMode('analyze')">🤖 Analyze</button>
       </div>
     </div>
-
-    <div class="sidebar-section">
-      <h3>Filter by Court</h3>
-      <div class="court-filters">
-        <button class="court-btn active" onclick="setCourtFilter(null, this)">
-          <span class="court-dot" style="background:#6b7a9a"></span>
-          All Courts
-          <span class="court-count" id="cnt-all">—</span>
+    <div>
+      <div class="s-label">Filter Court</div>
+      <div class="clist" id="clist-desk">
+        <button class="citem on" onclick="setCourtFilter(null,this,'d')">
+          <span class="cpip" style="background:#5a6888"></span>All Courts
+          <span class="cnum" id="ca-d">—</span>
         </button>
-        <button class="court-btn" onclick="setCourtFilter('SHC', this)">
-          <span class="court-dot" style="background:var(--shc)"></span>
-          Sindh High Court
-          <span class="court-count" id="cnt-shc">—</span>
+        <button class="citem" onclick="setCourtFilter('SHC',this,'d')">
+          <span class="cpip" style="background:var(--shc)"></span>Sindh High Court
+          <span class="cnum" id="cs-d">—</span>
         </button>
-        <button class="court-btn" onclick="setCourtFilter('LHC', this)">
-          <span class="court-dot" style="background:var(--lhc)"></span>
-          Lahore High Court
-          <span class="court-count" id="cnt-lhc">—</span>
+        <button class="citem" onclick="setCourtFilter('LHC',this,'d')">
+          <span class="cpip" style="background:var(--lhc)"></span>Lahore High Court
+          <span class="cnum" id="cl-d">—</span>
         </button>
-        <button class="court-btn" onclick="setCourtFilter('IHC', this)">
-          <span class="court-dot" style="background:var(--ihc)"></span>
-          Islamabad High Court
-          <span class="court-count" id="cnt-ihc">—</span>
+        <button class="citem" onclick="setCourtFilter('IHC',this,'d')">
+          <span class="cpip" style="background:var(--ihc)"></span>Islamabad High Court
+          <span class="cnum" id="ci-d">—</span>
         </button>
       </div>
     </div>
-
-    <div class="sidebar-section">
-      <h3>Scrape New Data</h3>
-      <div class="scrape-inputs">
-        <input type="text" id="scrape-kw" placeholder="Keyword (optional)" />
-        <select id="scrape-pages">
+    <div>
+      <div class="s-label">Scrape Data</div>
+      <div class="sform">
+        <input class="field" id="skw" type="text" placeholder="Keyword (optional)">
+        <select class="field" id="spg">
           <option value="3">3 pages per court</option>
           <option value="5" selected>5 pages per court</option>
           <option value="10">10 pages per court</option>
         </select>
-        <button class="btn btn-secondary" onclick="triggerScrape()" id="scrape-btn">
-          ⬇ Scrape Courts
-        </button>
-      </div>
-      <div id="scrape-status" class="status-msg" style="margin-top:8px"></div>
-    </div>
-
-    <div class="sidebar-section" style="margin-top:auto">
-      <h3>Database</h3>
-      <div class="db-info" id="db-info-box">
-        <div class="db-info-row"><span>Total Cases</span><span id="db-total">—</span></div>
-        <div class="db-info-row"><span>AI Model</span><span>MiniLM-L6</span></div>
-        <div class="db-info-row"><span>Vector DB</span><span>ChromaDB</span></div>
-        <div class="db-info-row"><span>LLM</span><span id="db-llm">Ollama/Claude</span></div>
+        <button class="btn-s" id="sbtn" onclick="doScrape('skw','spg','st')">⬇ Scrape Courts</button>
+        <div id="st" class="toast" style="margin-top:4px"></div>
       </div>
     </div>
-
+    <div class="dbp">
+      <div class="dbr"><span>Total Cases</span><span id="dbt">—</span></div>
+      <div class="dbr"><span>Search</span><span>TF-IDF</span></div>
+      <div class="dbr"><span>AI</span><span>Groq / Gemini</span></div>
+      <div class="dbr"><span>Courts</span><span>SHC·LHC·IHC</span></div>
+    </div>
   </aside>
 
-  <!-- ── Main ──────────────────────────────────── -->
+  <!-- MAIN -->
   <main class="main">
-
-    <!-- Search Box -->
-    <div class="search-box">
-      <div class="search-title">Legal Case Research</div>
-      <div class="search-input-row">
-        <input class="search-input" id="query-input" type="text"
-               placeholder="e.g. NHA road accident no U-turn sign negligence..."
-               onkeydown="if(event.key==='Enter') doSearch()" />
-        <button class="search-go" id="search-btn" onclick="doSearch()">Search →</button>
+    <div class="scard">
+      <div class="s-heading">Legal Case Research</div>
+      <div class="srow">
+        <input class="sinput" id="q" type="text"
+          placeholder="e.g. NHA road accident missing signs..."
+          onkeydown="if(event.key==='Enter')doSearch()"
+          autocomplete="off" autocorrect="off" spellcheck="false">
+        <button class="btn-go" id="gbtn" onclick="doSearch()"><span id="glbl">Search →</span></button>
       </div>
-      <div class="examples">
-        <span style="font-size:11px;color:var(--text3);align-self:center">Try:</span>
-        <span class="example-chip" onclick="fillQuery('NHA road accident negligence missing signs')">NHA road accident</span>
-        <span class="example-chip" onclick="fillQuery('wrongful termination labour law EOBI')">Labour law termination</span>
-        <span class="example-chip" onclick="fillQuery('illegal construction demolition order CDA LDA')">Illegal construction</span>
-        <span class="example-chip" onclick="fillQuery('tax evasion FBR recovery notice')">FBR tax evasion</span>
-        <span class="example-chip" onclick="fillQuery('constitutional rights Article 9 right to life')">Right to life</span>
-        <span class="example-chip" onclick="fillQuery('property dispute adverse possession')">Property dispute</span>
-      </div>
-    </div>
-
-    <!-- Status -->
-    <div id="main-status" class="status-msg"></div>
-
-    <!-- Loading -->
-    <div class="loading" id="loading">
-      <div class="spinner"></div>
-      <span id="loading-msg">Searching case law database...</span>
-    </div>
-
-    <!-- AI Analysis Panel -->
-    <div class="analysis-panel" id="analysis-panel">
-      <div class="panel-header">
-        <div class="panel-title">
-          🤖 AI Legal Analysis
-          <span class="ai-badge">RAG + LLM</span>
-        </div>
-        <span style="font-size:11px;color:var(--text3)" id="analysis-meta"></span>
-      </div>
-      <div class="analysis-body" id="analysis-body"></div>
-      <div class="citations-row" id="citations-row" style="display:none">
-        <span class="cite-label">Citations</span>
-        <span id="citations-list"></span>
+      <div class="chips">
+        <span class="chip-lbl">Try:</span>
+        <span class="chip" onclick="fill('NHA road accident negligence missing signs')">NHA accident</span>
+        <span class="chip" onclick="fill('wrongful termination labour EOBI reinstatement')">Labour law</span>
+        <span class="chip" onclick="fill('illegal construction demolition LDA CDA order')">Construction</span>
+        <span class="chip" onclick="fill('tax evasion FBR recovery notice sales tax')">FBR tax</span>
+        <span class="chip" onclick="fill('divorce khula custody children maintenance')">Family law</span>
+        <span class="chip" onclick="fill('bail application criminal murder FIR')">Bail/Criminal</span>
+        <span class="chip" onclick="fill('property dispute ownership title mutation')">Property</span>
       </div>
     </div>
 
-    <!-- Results -->
-    <div id="results-section" style="display:none">
-      <div class="results-header">
-        <span class="results-count" id="results-count"></span>
-        <span style="font-size:11px">Ranked by semantic similarity</span>
-      </div>
-    </div>
-    <div id="results-list"></div>
+    <div class="toast" id="mt"></div>
 
-    <!-- Empty state (initial) -->
-    <div class="empty-state" id="empty-state">
-      <div class="empty-icon">📚</div>
-      <div class="empty-title">Search Pakistani Case Law</div>
-      <div class="empty-sub">
-        Enter a legal issue or keyword to search<br>
-        SHC · LHC · IHC judgment databases
-      </div>
+    <div class="loader" id="ldr">
+      <div class="spin"></div>
+      <span id="lmsg">Searching case database...</span>
     </div>
 
+    <div class="acard" id="acard">
+      <div class="ahead">
+        <div class="atitle">🤖 AI Legal Analysis <span class="ai-pill">RAG + LLM</span></div>
+        <span class="ameta" id="ameta"></span>
+      </div>
+      <div class="abody" id="abody"></div>
+      <div class="cstrip" id="cstrip" style="display:none">
+        <span class="ctag">Citations</span>
+        <span id="clist2"></span>
+      </div>
+    </div>
+
+    <div class="rbar" id="rbar" style="display:none">
+      <span class="rn" id="rn"></span>
+      <span>Ranked by relevance</span>
+    </div>
+    <div class="rgrid" id="rg"></div>
+
+    <div class="empty" id="emp">
+      <div class="ei">📚</div>
+      <div class="eh">Search Pakistani Case Law</div>
+      <div class="ep">Search judgments from Sindh, Lahore &amp;<br>Islamabad High Courts with AI analysis</div>
+    </div>
   </main>
 </div>
 
+<!-- BOTTOM NAV -->
+<nav class="bnav" id="bnav">
+  <button class="bnb on" id="bn-s" onclick="mobMode('search')"><span class="bnico">🔍</span>Search</button>
+  <button class="bnb" id="bn-a" onclick="mobMode('analyze')"><span class="bnico">🤖</span>Analyze</button>
+  <button class="bnb" id="bn-f" onclick="toggleDrawer('filter')"><span class="bnico">⚖️</span>Courts</button>
+  <button class="bnb" id="bn-sc" onclick="toggleDrawer('scrape')"><span class="bnico">⬇</span>Scrape</button>
+</nav>
+
+<!-- DRAWER -->
+<div class="overlay" id="ov" onclick="closeDrawer()"></div>
+<div class="drawer" id="drw">
+  <div class="dhandle"></div>
+  <div class="dcontent" id="dc"></div>
+</div>
+
 <script>
-const API = 'https://legal-database.onrender.com';
-let mode = 'search';
-let courtFilter = null;
-let allResults = [];
+const API='https://legal-database.onrender.com';
+let mode='search',courtFilter=null,allResults=[],drawerType=null;
 
-// ── Init ────────────────────────────────────────────────────────
-async function init() {
-  try {
-    const r = await fetch(`${API}/stats`);
-    if (!r.ok) throw new Error();
-    const d = await r.json();
-    document.getElementById('hdr-count').textContent = `${d.total_cases} cases indexed`;
-    document.getElementById('db-total').textContent = d.total_cases;
-    updateCounts(d.total_cases);
-  } catch {
-    document.getElementById('hdr-count').textContent = 'API not running — start server';
-    showStatus('main-status', '⚠ API server not running. Start it with: cd pakistan-legal-ai && python -m api.server', 'error');
+// ── Init ──────────────────────────────────────────────────────
+async function init(){
+  try{
+    const r=await fetch(`${API}/stats`,{signal:AbortSignal.timeout(8000)});
+    if(!r.ok)throw new Error();
+    const d=await r.json();
+    const n=d.total_cases||0;
+    document.getElementById('hdr-count').textContent=`${n} cases`;
+    document.getElementById('dbt').textContent=n;
+    document.getElementById('ca-d').textContent=n;
+  }catch{
+    document.getElementById('hdr-count').textContent='Offline';
+    toast('mt','⚠ Cannot reach API server. Make sure your backend is running.','err');
   }
 }
 
-function updateCounts(total) {
-  document.getElementById('cnt-all').textContent = total;
+// ── Mode ──────────────────────────────────────────────────────
+function setMode(m){
+  mode=m;
+  document.getElementById('p-search').classList.toggle('on',m==='search');
+  document.getElementById('p-analyze').classList.toggle('on',m==='analyze');
+  document.getElementById('glbl').textContent=m==='analyze'?'Analyze →':'Search →';
+  document.getElementById('q').placeholder=m==='analyze'
+    ?'e.g. What have courts decided on NHA road accident liability?'
+    :'e.g. NHA road accident missing signs negligence...';
+}
+function mobMode(m){
+  setMode(m);
+  document.getElementById('bn-s').classList.toggle('on',m==='search');
+  document.getElementById('bn-a').classList.toggle('on',m==='analyze');
+  document.getElementById('q').focus();
 }
 
-// ── Mode ────────────────────────────────────────────────────────
-function setMode(m) {
-  mode = m;
-  document.getElementById('mode-search').classList.toggle('active', m === 'search');
-  document.getElementById('mode-analyze').classList.toggle('active', m === 'analyze');
-  const btn = document.getElementById('search-btn');
-  btn.textContent = m === 'analyze' ? 'Analyze →' : 'Search →';
-  document.getElementById('query-input').placeholder =
-    m === 'analyze'
-      ? 'e.g. What has courts decided when NHA fails to install road signs?'
-      : 'e.g. NHA road accident no U-turn sign negligence...';
+// ── Court filter ──────────────────────────────────────────────
+function setCourtFilter(c,btn,src){
+  courtFilter=c;
+  document.querySelectorAll('.citem').forEach(b=>b.classList.remove('on'));
+  if(btn)btn.classList.add('on');
+  if(allResults.length)renderResults(allResults);
+  closeDrawer();
 }
 
-// ── Court Filter ────────────────────────────────────────────────
-function setCourtFilter(court, btn) {
-  courtFilter = court;
-  document.querySelectorAll('.court-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  if (allResults.length > 0) renderResults(allResults);
-}
+// ── Search ────────────────────────────────────────────────────
+function fill(q){document.getElementById('q').value=q;doSearch()}
 
-// ── Search / Analyze ─────────────────────────────────────────────
-function fillQuery(q) {
-  document.getElementById('query-input').value = q;
-  doSearch();
-}
-
-async function doSearch() {
-  const query = document.getElementById('query-input').value.trim();
-  if (!query) return;
-
-  setLoading(true, mode === 'analyze' ? 'Running AI legal analysis...' : 'Searching case law database...');
-  document.getElementById('empty-state').style.display = 'none';
-  document.getElementById('analysis-panel').classList.remove('show');
-  document.getElementById('results-section').style.display = 'none';
-  document.getElementById('results-list').innerHTML = '';
-  clearStatus('main-status');
-
-  try {
-    const endpoint = mode === 'analyze' ? '/analyze' : '/search';
-    const body = { query, top_k: 10, court: courtFilter };
-    const r = await fetch(`${API}${endpoint}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
+async function doSearch(){
+  const q=document.getElementById('q').value.trim();
+  if(!q){document.getElementById('q').focus();return}
+  loading(true);
+  clearToast('mt');
+  document.getElementById('emp').style.display='none';
+  document.getElementById('acard').classList.remove('show');
+  document.getElementById('rbar').style.display='none';
+  document.getElementById('rg').innerHTML='';
+  try{
+    const r=await fetch(`${API}${mode==='analyze'?'/analyze':'/search'}`,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({query:q,top_k:10,court:courtFilter}),
+      signal:AbortSignal.timeout(120000)
     });
-
-    if (!r.ok) throw new Error(`Server error: ${r.status}`);
-    const data = await r.json();
-
-    if (mode === 'analyze') {
-      renderAnalysis(data);
-    } else {
-      allResults = data.results || [];
-      renderResults(allResults);
-    }
-  } catch (e) {
-    showStatus('main-status', `Error: ${e.message}`, 'error');
-    document.getElementById('empty-state').style.display = 'block';
-  } finally {
-    setLoading(false);
-  }
+    if(!r.ok)throw new Error(`Server error ${r.status}`);
+    const d=await r.json();
+    mode==='analyze'?renderAnalysis(d):(allResults=d.results||[],renderResults(allResults));
+  }catch(e){
+    toast('mt',e.name==='TimeoutError'
+      ?'⚠ Request timed out — server may be waking up. Try again in 30s.'
+      :`⚠ ${e.message}`,'err');
+    document.getElementById('emp').style.display='block';
+  }finally{loading(false)}
 }
 
-// ── Render Analysis ──────────────────────────────────────────────
-function renderAnalysis(data) {
-  const panel = document.getElementById('analysis-panel');
-  const body  = document.getElementById('analysis-body');
-  const meta  = document.getElementById('analysis-meta');
-
-  // Format markdown-ish text
-  let text = data.analysis || 'No analysis generated.';
-  text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  text = text.replace(/^- (.+)$/gm, '• $1');
-  body.innerHTML = text;
-
-  meta.textContent = `${data.total_searched || '?'} cases searched`;
-  panel.classList.add('show');
-
-  // Citations
-  if (data.citations && data.citations.length) {
-    const row = document.getElementById('citations-row');
-    const list = document.getElementById('citations-list');
-    row.style.display = 'flex';
-    list.innerHTML = data.citations.slice(0,12).map(c =>
-      `<span class="cite-chip">${c}</span>`
-    ).join('');
+// ── Render analysis ───────────────────────────────────────────
+function renderAnalysis(d){
+  let txt=d.analysis||'No analysis generated.';
+  txt=txt.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>');
+  txt=txt.replace(/^[-•]\s(.+)$/gm,'• $1');
+  document.getElementById('abody').innerHTML=txt;
+  document.getElementById('ameta').textContent=`${d.total_searched||'?'} cases searched`;
+  document.getElementById('acard').classList.add('show');
+  if(d.citations?.length){
+    document.getElementById('cstrip').style.display='flex';
+    document.getElementById('clist2').innerHTML=d.citations.slice(0,10).map(c=>`<span class="cpill-c">${esc(c)}</span>`).join('');
   }
-
-  // Also show the cases used
-  if (data.cases && data.cases.length) {
-    allResults = data.cases.map(c => ({ ...c, snippet: c.title }));
-    renderResults(data.cases, 'Cases Used in Analysis');
-  }
+  if(d.cases?.length){allResults=d.cases;renderResults(d.cases,'Cases Used in Analysis')}
 }
 
-// ── Render Results ───────────────────────────────────────────────
-function renderResults(results, headerLabel) {
-  const section = document.getElementById('results-section');
-  const list    = document.getElementById('results-list');
-  const count   = document.getElementById('results-count');
-
-  // Apply court filter
-  let filtered = courtFilter
-    ? results.filter(r => r.court === courtFilter)
-    : results;
-
-  section.style.display = 'flex';
-  count.textContent = `${filtered.length} case${filtered.length !== 1 ? 's' : ''} found${headerLabel ? ' — ' + headerLabel : ''}`;
-
-  if (!filtered.length) {
-    list.innerHTML = `<div class="empty-state" style="padding:2rem"><div class="empty-title">No cases match this filter</div><div class="empty-sub">Try selecting "All Courts"</div></div>`;
+// ── Render results ────────────────────────────────────────────
+function renderResults(res,lbl){
+  const fil=courtFilter?res.filter(r=>r.court===courtFilter):res;
+  document.getElementById('rbar').style.display='flex';
+  document.getElementById('rn').textContent=`${fil.length} case${fil.length!==1?'s':''}${lbl?' — '+lbl:''}`;
+  if(!fil.length){
+    document.getElementById('rg').innerHTML=`<div class="empty" style="padding:2rem"><div class="ei">🔎</div><div class="eh">No cases for this filter</div><div class="ep">Try "All Courts"</div></div>`;
     return;
   }
-
-  list.innerHTML = filtered.map((c, i) => {
-    const sim = Math.round((c.similarity || 0) * 100);
-    const citation = c.citation || '—';
-    const caseNo   = c.case_number || '';
-    const date     = c.date ? c.date.substring(0, 10) : '';
-    const snippet  = (c.snippet || '').substring(0, 400);
-    const url      = c.url || '#';
-    const court    = c.court || 'PKT';
-
-    return `
-    <div class="case-card" onclick="toggleCard(this)" data-idx="${i}">
-      <div class="card-top">
-        <div style="flex:1">
-          <span class="court-tag ${court}">${court}</span>
-        </div>
-        <div class="sim-bar">
-          <div class="sim-track"><div class="sim-fill" style="width:${sim}%"></div></div>
-          <span class="sim-pct">${sim}%</span>
-        </div>
+  document.getElementById('rg').innerHTML=fil.map(c=>{
+    const sim=Math.round((c.similarity||0)*100);
+    const ct=c.court||'PKT';
+    const ci=c.citation||'';
+    const cn=c.case_number||'';
+    const dt=(c.date||'').substring(0,10);
+    const sn=(c.snippet||'').substring(0,350);
+    const url=c.url||'';
+    return `<div class="cc" onclick="this.classList.toggle('open')">
+      <div class="crow1">
+        <span class="cbadge ${ct}">${ct}</span>
+        <div class="simw"><div class="simb"><div class="simf" style="width:${sim}%"></div></div><span class="simp">${sim}%</span></div>
       </div>
-      <div class="card-title">${escHtml(c.title || c.citation || 'Untitled Case')}</div>
-      <div class="card-meta">
-        ${citation !== '—' ? `<div class="meta-item">📋 <span class="val">${escHtml(citation)}</span></div>` : ''}
-        ${caseNo ? `<div class="meta-item">🗂 <span class="val">${escHtml(caseNo)}</span></div>` : ''}
-        ${date ? `<div class="meta-item">📅 <span class="val">${date}</span></div>` : ''}
+      <div class="ctitle">${esc(c.title||ci||'Untitled Case')}</div>
+      <div class="cmeta">
+        ${ci?`<div class="cmc">📋 <span class="v">${esc(ci)}</span></div>`:''}
+        ${cn?`<div class="cmc">🗂 <span class="v">${esc(cn)}</span></div>`:''}
+        ${dt?`<div class="cmc">📅 <span class="v">${dt}</span></div>`:''}
       </div>
-      ${snippet ? `<div class="card-snippet">${escHtml(snippet)}</div>` : ''}
-      ${url && url !== '#' ? `<a class="card-link" href="${url}" target="_blank" onclick="e=>e.stopPropagation()">View Full Judgment ↗</a>` : ''}
+      ${sn?`<div class="csnip">${esc(sn)}</div>`:''}
+      ${url?`<a class="clink" href="${esc(url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">View Judgment ↗</a>`:''}
     </div>`;
   }).join('');
 }
 
-function toggleCard(card) {
-  card.classList.toggle('expanded');
+// ── Scrape ────────────────────────────────────────────────────
+async function doScrape(kwId,pgId,toastId){
+  const kw=document.getElementById(kwId)?.value.trim()||'';
+  const pages=parseInt(document.getElementById(pgId)?.value||'5');
+  document.getElementById('sbtn').disabled=true;
+  document.getElementById('sbtn').textContent='⏳ Scraping...';
+  clearToast(toastId);
+  try{
+    const r=await fetch(`${API}/scrape`,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({keyword:kw||null,courts:['SHC','LHC','IHC'],max_pages:pages})});
+    if(!r.ok)throw new Error(`Server error ${r.status}`);
+    const d=await r.json();
+    toast(toastId,`✓ ${d.message}`,'ok');
+    setTimeout(init,6000);
+  }catch(e){toast(toastId,`⚠ ${e.message}`,'err')}
+  finally{document.getElementById('sbtn').disabled=false;document.getElementById('sbtn').textContent='⬇ Scrape Courts'}
 }
 
-// ── Scrape ────────────────────────────────────────────────────────
-async function triggerScrape() {
-  const kw    = document.getElementById('scrape-kw').value.trim();
-  const pages = parseInt(document.getElementById('scrape-pages').value);
-  const btn   = document.getElementById('scrape-btn');
-  const status = document.getElementById('scrape-status');
-
-  btn.disabled = true;
-  btn.textContent = '⏳ Scraping...';
-
-  try {
-    const r = await fetch(`${API}/scrape`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ keyword: kw || null, courts: ['SHC','LHC','IHC'], max_pages: pages }),
-    });
-    if (!r.ok) throw new Error(`Server error: ${r.status}`);
-    const d = await r.json();
-    showStatus('scrape-status', `✓ ${d.message}`, 'success');
-
-    // Refresh stats after delay
-    setTimeout(init, 5000);
-  } catch(e) {
-    showStatus('scrape-status', `Error: ${e.message}`, 'error');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '⬇ Scrape Courts';
+// ── Drawer ────────────────────────────────────────────────────
+function toggleDrawer(type){
+  if(document.getElementById('drw').classList.contains('open')&&drawerType===type){closeDrawer();return}
+  drawerType=type;
+  const dc=document.getElementById('dc');
+  if(type==='filter'){
+    dc.innerHTML=`
+      <div class="s-label">Filter by Court</div>
+      <div class="clist">
+        <button class="citem ${!courtFilter?'on':''}" onclick="setCourtFilter(null,this,'m')"><span class="cpip" style="background:#5a6888"></span>All Courts</button>
+        <button class="citem ${courtFilter==='SHC'?'on':''}" onclick="setCourtFilter('SHC',this,'m')"><span class="cpip" style="background:var(--shc)"></span>Sindh High Court</button>
+        <button class="citem ${courtFilter==='LHC'?'on':''}" onclick="setCourtFilter('LHC',this,'m')"><span class="cpip" style="background:var(--lhc)"></span>Lahore High Court</button>
+        <button class="citem ${courtFilter==='IHC'?'on':''}" onclick="setCourtFilter('IHC',this,'m')"><span class="cpip" style="background:var(--ihc)"></span>Islamabad High Court</button>
+      </div>`;
+  } else if(type==='scrape'){
+    dc.innerHTML=`
+      <div class="s-label">Scrape New Data</div>
+      <div class="sform">
+        <input class="field" id="mkw" type="text" placeholder="Keyword (optional)">
+        <select class="field" id="mpg"><option value="3">3 pages</option><option value="5" selected>5 pages</option><option value="10">10 pages</option></select>
+        <button class="btn-s" onclick="doScrape('mkw','mpg','mst')">⬇ Scrape Courts</button>
+        <div id="mst" class="toast" style="margin-top:4px"></div>
+      </div>`;
+  } else if(type==='menu'){
+    dc.innerHTML=`
+      <div class="s-label">Mode</div>
+      <div class="mode-grid" style="margin-bottom:16px">
+        <button class="mpill ${mode==='search'?'on':''}" onclick="setMode('search');closeDrawer()">🔍 Search</button>
+        <button class="mpill ${mode==='analyze'?'on':''}" onclick="setMode('analyze');closeDrawer()">🤖 Analyze</button>
+      </div>
+      <div class="s-label">Filter Court</div>
+      <div class="clist">
+        <button class="citem ${!courtFilter?'on':''}" onclick="setCourtFilter(null,this,'m')"><span class="cpip" style="background:#5a6888"></span>All Courts</button>
+        <button class="citem ${courtFilter==='SHC'?'on':''}" onclick="setCourtFilter('SHC',this,'m')"><span class="cpip" style="background:var(--shc)"></span>Sindh High Court</button>
+        <button class="citem ${courtFilter==='LHC'?'on':''}" onclick="setCourtFilter('LHC',this,'m')"><span class="cpip" style="background:var(--lhc)"></span>Lahore High Court</button>
+        <button class="citem ${courtFilter==='IHC'?'on':''}" onclick="setCourtFilter('IHC',this,'m')"><span class="cpip" style="background:var(--ihc)"></span>Islamabad High Court</button>
+      </div>`;
   }
+  document.getElementById('ov').classList.add('open');
+  document.getElementById('drw').classList.add('open');
+  document.getElementById('burger').classList.add('open');
+}
+function closeDrawer(){
+  document.getElementById('ov').classList.remove('open');
+  document.getElementById('drw').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
 }
 
-// ── Helpers ───────────────────────────────────────────────────────
-function setLoading(on, msg) {
-  const el = document.getElementById('loading');
-  const btn = document.getElementById('search-btn');
-  el.classList.toggle('show', on);
-  if (msg) document.getElementById('loading-msg').textContent = msg;
-  btn.disabled = on;
+// ── Helpers ───────────────────────────────────────────────────
+function loading(on){
+  document.getElementById('ldr').classList.toggle('show',on);
+  document.getElementById('gbtn').disabled=on;
+  if(on)document.getElementById('lmsg').textContent=mode==='analyze'?'Running AI legal analysis...':'Searching case database...';
 }
-
-function showStatus(id, msg, type) {
-  const el = document.getElementById(id);
-  el.textContent = msg;
-  el.className = `status-msg show ${type}`;
-}
-
-function clearStatus(id) {
-  const el = document.getElementById(id);
-  el.className = 'status-msg';
-}
-
-function escHtml(str) {
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
+function toast(id,msg,type){const e=document.getElementById(id);if(!e)return;e.textContent=msg;e.className=`toast show ${type}`}
+function clearToast(id){const e=document.getElementById(id);if(e)e.className='toast'}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
 init();
 </script>
 </body>
